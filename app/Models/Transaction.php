@@ -13,8 +13,12 @@ class Transaction extends Model {
         'amount',
         'user_id',
         'transaction_time',
+        'transaction_type',
         'category_id',
     ];
+
+    public static $transactionType_Credit = 'C';
+    public static $transactionType_Debit = 'D';
 
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class, 'id', 'category_id');

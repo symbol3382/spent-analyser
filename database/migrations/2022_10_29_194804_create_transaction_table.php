@@ -15,6 +15,7 @@ class CreateTransactionTable extends Migration {
             $table->id();
             $table->bigInteger('amount');
             $table->unsignedBigInteger('user_id');
+            $table->char('transaction_type', '2')   ;
             $table->dateTime('transaction_time');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();

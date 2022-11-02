@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactoinController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::middleware('auth')->prefix('transaction')->group( function() {
+   Route::post('store', [TransactoinController::class, 'createTransaction'])->name('transaction.create');
+});

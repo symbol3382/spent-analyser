@@ -43,7 +43,7 @@
             crossorigin="anonymous"></script>
 
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-light">
         @yield('body')
     </body>
 </html>

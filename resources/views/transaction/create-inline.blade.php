@@ -3,20 +3,33 @@
     <div class="row">
 
         <div class="col-3">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                </span>
-                <input
-                    type="number"
-                    name="transaction_amount"
-                    class="form-control br-0_25rem_r @error('transaction_amount') is-invalid @enderror "
-                    placeholder="Amount"
-                    aria-label="Amount"
-                    aria-describedby="basic-addon1"
-                />
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    @error('transaction_amount') {{ $message }} @enderror
+
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </span>
+                    <input
+                        type="number"
+                        name="transaction_amount"
+                        class="form-control @error('transaction_amount') is-invalid @enderror "
+                        placeholder="Amount"
+                        aria-label="Amount"
+                        aria-describedby="basic-addon1"
+                    />
+                    <div class="input-group-text br-0_25rem_r">
+
+                        <label class="form-check-label" for="amountIdCredit">
+                            <i class="fa-solid fa-credit-card"></i>
+                            Credit
+                            &nbsp;
+                        </label>
+                        <input class="form-check-input mt-0" name="is_credit" id="amountIdCredit" type="checkbox"
+                               value="{{ \App\Models\Transaction::$transactionType_Credit }}" aria-label="Is Amount Credited" />
+                    </div>
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        @error('transaction_amount') {{ $message }} @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,7 +50,6 @@
                     </select>
                     <input
                         type="text"
-                        name="category"
                         class="form-control br-0_25rem @error('category') is-invalid @enderror "
                         id="category-create"
                         placeholder="Add New Category"

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\TransactoinController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
+Route::middleware(['auth'])->group(function () {
 
-Route::middleware('auth')->prefix('transaction')->group( function() {
-   Route::post('store', [TransactoinController::class, 'createTransaction'])->name('transaction.create');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::prefix('transaction')->group(function () {
+        Route::post('store', [TransactionController::class, 'createTransaction'])->name('transaction.create');
+    });
 });

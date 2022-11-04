@@ -17,14 +17,18 @@ class Transaction extends Model {
         'category_id',
     ];
 
+    protected $casts = [
+        'transaction_time' => 'datetime',
+    ];
+
     public static $transactionType_Credit = 'C';
     public static $transactionType_Debit = 'D';
 
     public function category(): BelongsTo {
-        return $this->belongsTo(Category::class, 'id', 'category_id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class,  'user_id', 'id');
     }
 }

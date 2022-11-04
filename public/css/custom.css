@@ -5,3 +5,26 @@
     font-size: 1rem;
     border-radius: .2rem;
 }
+
+.bg-credit {
+    background-color: #E9F7EF;
+    transition: 0.1s;
+}
+
+.bg-credit:hover {
+    background-color: #52BE80;
+    font-size: 1.5rem;
+    color: #FFF;
+    transition: 0.1s;
+}
+
+.bg-debit {
+    background-color: #F9EBEA;
+    transition: 0.1s;
+}
+.bg-debit:hover {
+    background-color: #D98880;
+    font-size: 1.5rem;
+    color: #FFF;
+    transition: 0.1s;
+}

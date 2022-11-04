@@ -48,7 +48,7 @@
                         role="tabpanel"
                         aria-labelledby="v-tabs-transaction-list-tab"
                     >
-                        @include('dashboard.transaction-list')
+                        @include('dashboard.transaction-list.transaction-list')
                     </div>
                     <div
                         class="tab-pane fade"

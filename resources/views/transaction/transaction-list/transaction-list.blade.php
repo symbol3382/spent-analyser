@@ -48,7 +48,7 @@
                     role="tabpanel"
                     aria-labelledby="trans-grid-list"
                 >
-                    @include('dashboard.transaction-list.transaction-grid-list.transaction-grid-list')
+                    @include('transaction.transaction-list.transaction-grid-list.transaction-grid-list')
                 </div>
                 <div
                     class="tab-pane fade"
@@ -56,7 +56,7 @@
                     role="tabpanel"
                     aria-labelledby="trans-table-list"
                 >
-                    @include('dashboard.transaction-list.transaction-table-list.transaction-table-list')
+                    @include('transaction.transaction-list.transaction-table-list.transaction-table-list')
                 </div>
             </div>
             <!-- Tabs content -->

@@ -2,7 +2,7 @@
 
     <div class="card mb-3 border shadow-0 {{
         $transaction->transaction_type === \App\Models\Transaction::$transactionType_Credit ? "bg-credit" : "bg-debit"
-    }}">
+    }} trans-grid-hover">
         <div class="card-body">
             <div class="row align-items-center d-flex">
                 <div class="col-8">

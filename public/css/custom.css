@@ -15,13 +15,6 @@
     transition: 0.1s;
 }
 
-.bg-credit:hover {
-    background-color: #52BE80;
-    font-size: 1.5rem;
-    color: #FFF;
-    transition: 0.1s;
-}
-
 .bg-debit {
     background-color: #F9EBEA;
     transition: 0.1s;
@@ -29,9 +22,21 @@
 
 .bg-debit:hover {
     background-color: #D98880;
-    font-size: 1.5rem;
     color: #FFF;
+}
+
+.bg-credit:hover {
+    background-color: #52BE80;
+    color: #FFF;
+}
+
+.trans-grid-hover:hover {
+    font-size: 1.5rem;
     transition: 0.1s;
+}
+
+.trans-table-row-hover:hover {
+    background-color: #D98880
 }
 
 .trans-grid-delete {
@@ -44,8 +49,7 @@
     color: #000;
 }
 
-.bg-debit:hover .trans-grid-delete,
-.bg-credit:hover .trans-grid-delete{
+.trans-grid-hover:hover .trans-grid-delete {
     display: inline;
     color: #FFF;
 }

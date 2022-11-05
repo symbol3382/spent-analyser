@@ -24,7 +24,10 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
+                    <a class="nav-link {{ $headerNavTab === 'dashboard' ? 'active' : '' }} " href="{{route('dashboard')}}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ $headerNavTab === 'category' ? 'active' : '' }}" href="{{route('category.list')}}">Category</a>
                 </li>
             </ul>
             <!-- Left links -->

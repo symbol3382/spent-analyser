@@ -13,7 +13,7 @@
         @foreach($transactions as $key => $transaction)
             <tr class="{{ $transaction->transaction_type === \App\Models\Transaction::$transactionType_Credit ? "bg-credit" : "bg-debit" }}">
                 <th scope="row">{{ $key + 1 }}</th>
-                <td> {{ucfirst($transaction->category->category_name)}}</td>
+                <td> {{ucwords($transaction->category->category_name)}}</td>
                 <td><i class="fa-solid fa-indian-rupee-sign fa-xs"></i> {{ $transaction->amount }}</td>
                 <td>
                     <form class="ps-2 display-inline-block" action="{{route('transaction.delete') }}" method="POST">

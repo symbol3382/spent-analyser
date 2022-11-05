@@ -8,7 +8,5 @@
             </div>
         </div>
         @include('dashboard.transaction-preview-tabs')
-
-
     </div>
 @endsection

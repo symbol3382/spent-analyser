@@ -54,3 +54,20 @@
     color: #FFF;
 }
 
+.category-grid {
+    background-color: #EAECEE;
+    transition: 0.2s;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+}
+
+.category-grid:hover {
+    background-color: #3265b9;
+    color: #FFF;
+    transition: 0.2s;
+}
+
+.category-grid button:hover {
+    color: #000;
+    transition: 0.3s;
+}

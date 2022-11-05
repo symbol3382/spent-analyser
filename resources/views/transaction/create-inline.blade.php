@@ -46,7 +46,7 @@
                         aria-label="Default select example">
                         <option value="" selected>Select Category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}"> {{ Str::ucfirst($category->category_name) }}</option>
+                            <option value="{{ $category->id }}"> {{ ucwords($category->category_name) }}</option>
                         @endforeach
                     </select>
                     <input

@@ -9,7 +9,7 @@
                     <h5 class="card-title">Transactions</h5>
                 </div>
                 <!-- Tabs navs -->
-                <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                <ul class="nav nav-pills nav-tabs mb-3" id="ex-with-icons" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a
                             class="nav-link active"
@@ -20,7 +20,7 @@
                             aria-controls="trans-grid-list-link"
                             aria-selected="true"
                         >
-                            <i class="fa-solid fa-list"></i>
+                            <i class="fa-solid fa-list"></i> Grid View
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -33,7 +33,7 @@
                             aria-controls="trans-table-list-link"
                             aria-selected="true"
                         >
-                            <i class="fa-solid fa-table-list"></i>
+                            <i class="fa-solid fa-table-list"></i> Table View
                         </a>
                     </li>
                 </ul>

@@ -6,7 +6,7 @@
                 <div class="card border ">
                     <div class="card-body">
                         <div
-                            class="nav flex-column nav-tabs text-center"
+                            class="nav nav-pills flex-column nav-tabs text-center"
                             id="v-tabs-tab"
                             role="tablist"
                             aria-orientation="vertical"

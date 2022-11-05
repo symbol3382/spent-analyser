@@ -14,6 +14,7 @@ class DashboardController extends Controller {
             ->get();
         $categories = Category::all();
         return view('dashboard.dashboard')->with([
+            'headerNavTab' => 'dashboard',
             'transactions' => $transactions,
             'categories'   => $categories,
         ]);

@@ -5,7 +5,7 @@
     }}">
         <div class="card-body">
             <div class="row align-items-center d-flex">
-                <div class="col-9">
+                <div class="col-8">
                     <div class="col-12">
                         <h5 class="card-title">
                             {{ $transaction->category->category_name }} {{ $transaction->transaction_type  }}
@@ -17,15 +17,23 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-3 text-center">
+                <div class="col-4 text-end">
                     <i class="fa-solid fa-indian-rupee-sign fa-lg"></i>
                     <h3 class="display-inline-block">
                         {{ $transaction->amount }}
                     </h3>
+                    <form class="ps-2 display-inline-block" action="{{route('transaction.delete') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
+                        <button type="submit" class="trans-grid-delete">
+                            <i class="fa-solid fa-trash shadow-5-strong"></i>
+                        </button>
+                    </form>
+                    {{--                    <a href="{{ route('') }}" class="p-3 trans-grid-delete">--}}
+                    {{--                    </a>--}}
                 </div>
             </div>
         </div>
     </div>
-
-
 @endforeach

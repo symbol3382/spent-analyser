@@ -6,6 +6,10 @@
     border-radius: .2rem;
 }
 
+.plain-anchor {
+    text-decoration: none;
+}
+
 .bg-credit {
     background-color: #E9F7EF;
     transition: 0.1s;
@@ -22,9 +26,28 @@
     background-color: #F9EBEA;
     transition: 0.1s;
 }
+
 .bg-debit:hover {
     background-color: #D98880;
     font-size: 1.5rem;
     color: #FFF;
     transition: 0.1s;
 }
+
+.trans-grid-delete {
+    display: none;
+    color: #000;
+}
+
+.trans-grid-delete:hover i {
+    transition: 0.9s;
+    color: #000;
+}
+
+
+.bg-debit:hover .trans-grid-delete,
+.bg-credit:hover .trans-grid-delete{
+    display: inline;
+    color: #FFF;
+}
+

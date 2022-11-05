@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TransactionDeleteRequest;
 use App\Http\Requests\TransactionStoreRequest;
 use App\Models\Category;
 use App\Models\Transaction;
@@ -20,8 +21,13 @@ class TransactionController extends Controller {
             'user_id'          => Auth::id(),
             'transaction_time' => $request->input('transaction_time'),
             'category_id'      => $category->id,
-            'transaction_type'  => $request->input('is_credit', Transaction::$transactionType_Debit)
+            'transaction_type' => $request->input('is_credit', Transaction::$transactionType_Debit)
         ]);
         return $transaction;
+    }
+
+    public function deleteTransaction(TransactionDeleteRequest $request) {
+        Transaction::find($request->input('transaction_id'))->delete();
+        return redirect()->back();
     }
 }

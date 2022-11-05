@@ -27,5 +27,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::prefix('transaction')->group(function () {
         Route::post('store', [TransactionController::class, 'createTransaction'])->name('transaction.create');
+        Route::delete('delete', [TransactionController::class, 'deleteTransaction'])->name('transaction.delete');
     });
 });

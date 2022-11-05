@@ -8,7 +8,7 @@
                 <div class="col-8">
                     <div class="col-12">
                         <h5 class="card-title">
-                            {{ $transaction->category->category_name }} {{ $transaction->transaction_type  }}
+                            {{ ucfirst($transaction->category->category_name) }}
                         </h5>
                     </div>
                     <div class="col-12">

@@ -16,14 +16,14 @@ class TransactionController extends Controller {
         ], [
             'created_by' => Auth::id(),
         ]);
-        $transaction = Transaction::create([
+        Transaction::create([
             'amount'           => $request->input('transaction_amount'),
             'user_id'          => Auth::id(),
             'transaction_time' => $request->input('transaction_time'),
             'category_id'      => $category->id,
             'transaction_type' => $request->input('is_credit', Transaction::$transactionType_Debit)
         ]);
-        return $transaction;
+        return redirect()->back();
     }
 
     public function deleteTransaction(TransactionDeleteRequest $request) {

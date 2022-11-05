@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +12,10 @@ class DashboardController extends Controller {
             ->where('user_id', Auth::id())
             ->orderBy('transaction_time', 'desc')
             ->get();
-        return view('dashboard.dashboard')->with(['transactions' => $transactions]);
+        $categories = Category::all();
+        return view('dashboard.dashboard')->with([
+            'transactions' => $transactions,
+            'categories'   => $categories,
+        ]);
     }
 }

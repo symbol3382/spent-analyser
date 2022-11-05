@@ -25,7 +25,8 @@
                             &nbsp;
                         </label>
                         <input class="form-check-input mt-0" name="is_credit" id="amountIdCredit" type="checkbox"
-                               value="{{ \App\Models\Transaction::$transactionType_Credit }}" aria-label="Is Amount Credited" />
+                               value="{{ \App\Models\Transaction::$transactionType_Credit }}"
+                               aria-label="Is Amount Credited" />
                     </div>
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         @error('transaction_amount') {{ $message }} @enderror
@@ -43,10 +44,10 @@
                         id="category-select"
                         aria-describedby="validationForCategory"
                         aria-label="Default select example">
-                        <option selected>Select Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="" selected>Select Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}"> {{ Str::ucfirst($category->category_name) }}</option>
+                        @endforeach
                     </select>
                     <input
                         type="text"

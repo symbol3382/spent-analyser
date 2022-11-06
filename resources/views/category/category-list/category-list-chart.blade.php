@@ -5,9 +5,14 @@
         <div class="d-flex mb-3 justify-content-between">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    <li class="breadcrumb-item"><a
+                            href=" {{ route('category.list') }}">Categories</a>
+                    </li>
+                    @foreach($parentCategories as $parentCategory)
+                        <li class="breadcrumb-item"><a
+                                href=" {{ route('category.list', ['parent' => $parentCategory->id]) }}">{{ ucwords($parentCategory->category_name) }}</a>
+                        </li>
+                    @endforeach
                 </ol>
             </nav>
             <button
@@ -17,17 +22,21 @@
                 data-mdb-toggle="modal"
             ><i class="fa-solid fa-plus"></i></button>
         </div>
-                <x-error-box></x-error-box>
+        <x-error-box></x-error-box>
         <div class="card ">
             <div class="card-body">
                 <div class="d-flex flex-wrap">
                     @foreach($categories as $category)
-                        <div class="col-4 pe-3 ps-3 mb-4">
+                        <div class="col-4 pe-3 ps-3 mb-4"
+                        >
                             <div
-                                class="h-100 align-items-center br-100 d-flex border shadow-3-strong p-3 pe-4 ps-4 category-grid">
-                                <div class="flex-fill text-">
+                                class="h-100 align-items-center br-100 d-flex border shadow-3-strong p-3 pe-4 ps-4 category-grid"
+                            >
+                                <a class="flex-fill plain-anchor"
+                                   href=" {{ route('category.list', ['parent' => $category->id]) }}"
+                                >
                                     {{ ucwords($category->category_name) }}
-                                </div>
+                                </a>
                                 <div class="">
                                     <button
                                         type="button"
@@ -48,6 +57,9 @@
                                         </button>
                                     </form>
                                 </div>
+                                <div>
+
+                                </div>
                             </div>
                         </div>
                         <x-category-form-modal
@@ -61,5 +73,4 @@
         </div>
     </div>
     <x-category-form-modal categoryId="" categoryName="" parentCategory=""></x-category-form-modal>
-
 @endsection

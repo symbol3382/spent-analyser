@@ -8,6 +8,10 @@
 
 .plain-anchor {
     text-decoration: none;
+    color: inherit;
+}
+.plain-anchor:hover {
+    color: inherit;
 }
 
 .bg-credit {

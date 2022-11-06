@@ -7,15 +7,31 @@ use App\Http\Requests\CategoryModifyRequest;
 use App\Models\Category;
 use Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class CategoryController extends Controller {
 
-    public function categoryList() {
-        $categories = Category::orderBy('category_name')->get();
+    public function categoryList(Request $request) {
+        $categories = Category::whereParentCategoryId($request->input('parent'))
+            ->orderBy('category_name')->get();
+        $parentTrack = new Collection();
+        if ($request->input('parent') && $parentCategory = Category::find($request->input('parent'))) {
+            while ($parentCategory) {
+                if ($parentTrack->where('id', $parentCategory->id)->count()) {
+                    // the parent is already present in parent track means there is loop of category
+                    break;
+                }
+                $parentTrack->push($parentCategory);
+                $parentCategory = $parentCategory->parentCategory;
+            }
+            $parentTrack = $parentTrack->reverse();
 
+        }
         return view('category.category-list.category-list-chart')->with([
-            'headerNavTab' => 'category', // to show the category selected in header nav tab
-            'categories'   => $categories,
+            'headerNavTab'     => 'category', // to show the category selected in header nav tab
+            'categories'       => $categories,
+            'parentCategories' => $parentTrack,
         ]);
     }
 

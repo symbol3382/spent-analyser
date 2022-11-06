@@ -4,24 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryTable extends Migration
-{
+class CreateCategoryTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
             $table->unsignedBigInteger('parent_category_id')->nullable();
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->string('category_icon_path')->nullable();
             $table->timestamps();
-
-            $table->foreign('parent_category_id')->references('id')->on('categories');
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('parent_category_id')->references('id')->on('categories')->nullOnDelete();
         });
     }
 
@@ -30,8 +28,7 @@ class CreateCategoryTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('categories');
     }
 }

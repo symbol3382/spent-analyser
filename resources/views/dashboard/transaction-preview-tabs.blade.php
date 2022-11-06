@@ -1,7 +1,7 @@
 <div class="card mt-5">
     <div class="card-body">
-        <div class="row w-100">
-            <div class="col-3">
+        <div class="row">
+            <div class="col-2">
                 <div class="card border mb-4">
                     <div class="card-body">
                         <div
@@ -107,7 +107,7 @@
                 <!-- Tab navs -->
             </div>
 
-            <div class="col-9">
+            <div class="col-10">
                 <!-- Tab content -->
                 <div class="tab-content" id="v-tabs-tabContent">
 

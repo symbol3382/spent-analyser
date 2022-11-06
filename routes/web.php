@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('transaction')->group(function () {
         Route::post('store', [TransactionController::class, 'createTransaction'])->name('transaction.create');
+        Route::post('modify', [TransactionController::class, 'updateTransaction'])->name('transaction.modify');
         Route::delete('delete', [TransactionController::class, 'deleteTransaction'])->name('transaction.delete');
     });
 

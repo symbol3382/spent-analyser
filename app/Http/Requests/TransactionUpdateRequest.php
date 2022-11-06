@@ -3,15 +3,17 @@
 namespace App\Http\Requests;
 
 use App\Models\Transaction;
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class TransactionStoreRequest extends FormRequest {
+class TransactionUpdateRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize(): bool {
         return true;
     }
 
@@ -20,9 +22,10 @@ class TransactionStoreRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules(): array {
         $isCredit = Transaction::$transactionType_Credit;
         return [
+            'transaction_id'     => ['required', Rule::exists('transactions', 'id')->where('user_id', Auth::id())],
             'transaction_amount' => 'required|min:1',
             'category'           => 'required',
             'is_credit'          => "nullable|in:$isCredit",

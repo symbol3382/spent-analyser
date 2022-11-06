@@ -15,9 +15,10 @@ class CreateTransactionTable extends Migration {
             $table->id();
             $table->bigInteger('amount');
             $table->unsignedBigInteger('user_id');
-            $table->char('transaction_type', '2')   ;
+            $table->char('transaction_type', '2');
             $table->dateTime('transaction_time');
             $table->unsignedBigInteger('category_id');
+            $table->string('comment')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

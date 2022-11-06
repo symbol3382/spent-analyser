@@ -30,5 +30,8 @@
 </head>
 <body class="font-sans antialiased bg-light">
 @yield('body')
+
+
+<script src="{{ asset('js/transaction.js') }}"></script>
 </body>
 </html>

@@ -43,6 +43,7 @@ class Transaction extends Model {
         'user_id',
         'transaction_time',
         'transaction_type',
+        'comment',
         'category_id',
     ];
 

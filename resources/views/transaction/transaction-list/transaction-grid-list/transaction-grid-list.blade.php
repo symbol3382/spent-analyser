@@ -1,4 +1,13 @@
 @foreach($transactions as $transaction)
+    <x-transaction-form-modal
+        transactionAmount="{{$transaction->amount}}"
+        transactionComment="{{$transaction->comment}}"
+        transactionCategoryId="{{$transaction->category_id}}"
+        transactionTime="{{$transaction->transaction_time}}"
+        transactionId="{{ $transaction->id }}"
+    >
+
+    </x-transaction-form-modal>
 
     <div class="card mb-3 border shadow-0 {{
         $transaction->transaction_type === \App\Models\Transaction::$transactionType_Credit ? "bg-credit" : "bg-debit"
@@ -22,16 +31,19 @@
                     <h3 class="display-inline-block">
                         {{ $transaction->amount }}
                     </h3>
+                    <button type="button" class="ms-2 trans-grid-action" data-mdb-toggle="modal"
+                            data-mdb-target="#trans-modify-modal{{$transaction->id}}">
+                        <i class="fa-solid fa-pencil shadow-5-strong"></i>
+                    </button>
+
                     <form class="ps-2 display-inline-block" action="{{route('transaction.delete') }}" method="POST">
                         @csrf
                         <input type="hidden" name="_method" value="delete">
                         <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
-                        <button type="submit" class="trans-grid-delete">
+                        <button type="submit" class="trans-grid-action">
                             <i class="fa-solid fa-trash shadow-5-strong"></i>
                         </button>
                     </form>
-                    {{--                    <a href="{{ route('') }}" class="p-3 trans-grid-delete">--}}
-                    {{--                    </a>--}}
                 </div>
             </div>
         </div>

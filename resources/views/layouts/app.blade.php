@@ -27,6 +27,14 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        let analyticsData = JSON.parse('{!! $analytics !!}');
+    </script>
+    <script src="{{ asset('js/googleCharts.js') }}">
+
+    </script>
+
 </head>
 <body class="font-sans antialiased bg-light">
 @yield('body')

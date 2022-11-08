@@ -34,9 +34,15 @@ function drawHourWiseChart() {
     var options = {
         'title': 'Daily Active Hours',
         legend: {position: 'none', maxLines: 3, alignment: 'center'},
-        hAxis: {format: "hh a"},
+        hAxis: {format: "hh a", gridlines: {interval: 1, multiple: 1}},
         vAxis: {minValue: 0},
+        explorer: {
+            axis: 'horizontal',
+            actions: ['dragToPan', "rightClickToReset"],
+            keepInBounds: true,
+        },
         chartArea: {'width': '90%', 'height': '70%'},
+        colors: ['#1B4F72'],
     };
 
     // Instantiate and draw our chart, passing in some options.
@@ -62,7 +68,7 @@ function drawDayWiseChart() {
 
     // Set chart options
     var options = {
-        'title': 'Day Category Wise',
+        colors: ["#E74C3C"],
         curveType: 'function',
         legend: {position: 'none', maxLines: 3, alignment: 'center'},
         hAxis: {format: "d MMM"},
@@ -102,9 +108,8 @@ function drawCategoryWiseChart() {
 
     // Set chart options
     var options = {
-        'title': 'Spent Category Wise',
         bar: {groupWidth: "80%"},
-        // height: 400,
+        height: 400,
         legend: {position: 'none', maxLines: 3, alignment: 'center'},
         chartArea: {'width': '80%', 'height': '70%'},
     };

@@ -35,7 +35,7 @@
                                 <a class="flex-fill plain-anchor"
                                    href=" {{ route('category.list', ['parent' => $category->id]) }}"
                                 >
-                                    {{ ucwords($category->category_name) }}
+                                    {{ strtoupper($category->category_name) }}
                                 </a>
                                 <div class="">
                                     <button

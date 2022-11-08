@@ -6,3 +6,9 @@
 .h-100 {height: 100%}
 
 .br-100 {border-radius: 100rem}
+
+.fixed {position: fixed;}
+.static {position: static;}
+.sticky {position: sticky;}
+
+.top-1vh {top:1vh;}

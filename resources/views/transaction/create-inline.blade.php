@@ -78,7 +78,7 @@
                             hidden
                         />
                         <span class="input-group-text br-0_25rem_r" id="basic-addon2">
-                        <button type="button" id="category-select-toggle" onclick="toggleCategoryAdd()">
+                        <button type="button" id="category-select-toggle" class="plain-button" onclick="toggleCategoryAdd()">
                             <i class="fa-solid fa-plus"></i> Add New
                         </button>
                     </span>

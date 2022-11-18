@@ -7,6 +7,44 @@ function drawCharts() {
     drawCategoryWiseChart();
     drawDayWiseChart();
     drawHourWiseChart();
+    drawExpensesChart();
+}
+
+function drawExpensesChart() {
+    let dom = document.getElementById('expenses-saving-spent-chart');
+    let chartData = analyticsData.expenseSavingData;
+
+    // Create the data table.
+    var data = new google.visualization.arrayToDataTable([
+        ["Month",'Income', 'Saving', 'Expenses'],
+        ...chartData.map(row => {
+            row[0] = new Date(row[0]);
+            return row;
+        }),
+    ]);
+    // Set chart options
+    var options = {
+        legend: {position: 'none', maxLines: 3, alignment: 'center'},
+        hAxis: {
+            format: "MMMM",
+            // gridlines: {interval: 1, multiple: 1}
+        },
+        vAxis: {minValue: 0},
+        explorer: {
+            axis: 'horizontal',
+            actions: ['dragToPan','dragToZoom', "rightClickToReset"],
+            // keepInBounds: true,
+        },
+        chartArea: {'width': '90%', 'height': '70%'},
+        colors: [
+            '#28B463', // Green
+            '#3498DB', // Blue
+            '#E74C3C', // Red
+        ],
+    };
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.AreaChart(dom);
+    chart.draw(data, options);
 }
 
 function drawHourWiseChart() {
@@ -73,6 +111,7 @@ function drawDayWiseChart() {
         legend: {position: 'none', maxLines: 3, alignment: 'center'},
         hAxis: {format: "d MMM"},
         vAxis: {minValue: 0},
+        pointSize: 5,
         chartArea: {'width': '90%', 'height': '70%'},
     };
 

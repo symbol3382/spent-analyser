@@ -29,8 +29,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category whereUpdatedAt($value)
  * @mixin Eloquent
  */
-class Category extends Model {
+class Category extends BaseModel {
     use HasFactory;
+
+    public static $primaryKeyName = '_id';
 
     protected $fillable = [
         'category_name',

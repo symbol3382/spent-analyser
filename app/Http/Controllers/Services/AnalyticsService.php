@@ -21,9 +21,9 @@ class AnalyticsService {
         $expenseSavingData = $this->prepareExpensesData($transactions);
         return [
             'categoryWiseSpentData' => $categoryWiseResult,
-            'dayWiseSpentData'      => $dayWiseResult['dayWise'],
-            'hourWiseSpentData'     => $dayWiseResult['hourWise'],
-            'expenseSavingData'     => $expenseSavingData,
+            'dayWiseSpentData' => $dayWiseResult['dayWise'],
+            'hourWiseSpentData' => $dayWiseResult['hourWise'],
+            'expenseSavingData' => $expenseSavingData,
         ];
     }
 
@@ -33,32 +33,32 @@ class AnalyticsService {
      */
     private function prepareExpensesData($transactions): array {
         $monthWiseExpenses = [
-            'January'   => 0,
-            'February'  => 0,
-            'March'     => 0,
-            'April'     => 0,
-            'May'       => 0,
-            'June'      => 0,
-            'July'      => 0,
-            "August"    => 0,
+            'January' => 0,
+            'February' => 0,
+            'March' => 0,
+            'April' => 0,
+            'May' => 0,
+            'June' => 0,
+            'July' => 0,
+            "August" => 0,
             'September' => 0,
-            'October'   => 0,
-            'November'  => 0,
-            'December'  => 0,
+            'October' => 0,
+            'November' => 0,
+            'December' => 0,
         ];
         $monthWiseIncome = [
-            'January'   => 0,
-            'February'  => 0,
-            'March'     => 0,
-            'April'     => 0,
-            'May'       => 0,
-            'June'      => 0,
-            'July'      => 0,
-            "August"    => 0,
+            'January' => 0,
+            'February' => 0,
+            'March' => 0,
+            'April' => 0,
+            'May' => 0,
+            'June' => 0,
+            'July' => 0,
+            "August" => 0,
             'September' => 0,
-            'October'   => 0,
-            'November'  => 0,
-            'December'  => 0,
+            'October' => 0,
+            'November' => 0,
+            'December' => 0,
         ];
         foreach ($transactions as $transaction) {
             if ($transaction->transaction_type === Transaction::$transactionType_Debit) {
@@ -106,21 +106,23 @@ class AnalyticsService {
         }
 
         return [
-            'dayWise'  => array_values($dayWise),
+            'dayWise' => array_values($dayWise),
             'hourWise' => array_values($hourResult)
         ];
     }
 
-    private function prepareCategoryWise($transactions) {
+    private function prepareCategoryWise($transactions): array {
         $topCategories = [];
         $categoryService = new CategoryService();
 
         $categoryWiseResult = [];
 
         foreach ($transactions as $transaction) {
+
             if ($transaction->transaction_type !== Transaction::$transactionType_Debit) {
                 continue;
             }
+
             if (!isset($topCategories[$transaction->category->id])) {
                 $parent = $categoryService->getTopParent($transaction->category);
                 $topCategories[$transaction->category->id] = $parent;

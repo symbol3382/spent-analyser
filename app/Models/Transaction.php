@@ -35,8 +35,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Transaction whereUserId($value)
  * @mixin Eloquent
  */
-class Transaction extends Model {
+class Transaction extends BaseModel {
     use HasFactory;
+
+    public static $primaryKeyName = '_id';
 
     protected $fillable = [
         'amount',
@@ -55,10 +57,10 @@ class Transaction extends Model {
     public static $transactionType_Debit = 'D';
 
     public function category(): BelongsTo {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', Category::$primaryKeyName);
     }
 
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class,  'user_id', 'id');
+        return $this->belongsTo(User::class,  'user_id', User::$primaryKeyName);
     }
 }

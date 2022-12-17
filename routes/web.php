@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MigrateController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,6 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('delete', [CategoryController::class, 'categoryDelete'])->name('category.delete');
     });
 });
+
+
+Route::get('migrate', [MigrateController::class, 'mysqlToMongoDbMigrate']);

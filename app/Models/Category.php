@@ -41,6 +41,6 @@ class Category extends BaseModel {
     ];
 
     public function parentCategory(): BelongsTo {
-        return $this->belongsTo(Category::class, 'parent_category_id', 'id');
+        return $this->belongsTo(Category::class, 'parent_category_id', self::$primaryKeyName);
     }
 }

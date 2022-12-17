@@ -9,15 +9,6 @@
 
 <div class="card border mb-4">
     <div class="card-body">
-        <h4 class="card-title"> Expenses/Saving Analysis</h4>
-        <div class="" id="expenses-saving-spent-chart">
-
-        </div>
-    </div>
-</div>
-
-<div class="card border mb-4">
-    <div class="card-body">
         <h4 class="card-title"> Day Wise Spent</h4>
         <div class="" id="day-spent-chart">
 

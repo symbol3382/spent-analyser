@@ -50,17 +50,29 @@ function drawExpensesChart() {
 function drawHourWiseChart() {
     let dom = document.getElementById('hour-spent-chart');
 
+    let today=  new Date();
+
     let hourWiseChartData = analyticsData.hourWiseSpentData.map(dayData => {
+        let date = new Date(dayData[0]);
+        date.setDate(today.getDate());
+        date.setMonth(today.getMonth());
+        date.setFullYear(today.getFullYear());
+        console.log('dddd day data', date);
         return [
-            new Date(dayData[0]),
+            date,
             dayData[1],
         ]
     });
 
     let chartData = hourWiseChartData.map(hourData => {
-        return [hourData[0], hourData[1], `Hour: ${hourData[0].getHours()}\nAmount: ₹ ${hourData[1]}`]
+        return [
+            hourData[0],
+            hourData[1],
+            `Hour: ${hourData[0].getHours()}\nAmount: ₹ ${hourData[1]}`
+        ]
     });
 
+    console.log('ddddd hcard', chartData);
 
     // Create the data table.
     var data = new google.visualization.DataTable();
@@ -72,7 +84,7 @@ function drawHourWiseChart() {
     var options = {
         'title': 'Daily Active Hours',
         legend: {position: 'none', maxLines: 3, alignment: 'center'},
-        hAxis: {format: "hh a", gridlines: {interval: 1, multiple: 1}},
+        hAxis: {format:  "hh a", gridlines: {interval: 1, multiple: 1}},
         vAxis: {minValue: 0},
         explorer: {
             axis: 'horizontal',
